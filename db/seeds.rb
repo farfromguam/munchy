@@ -19,16 +19,20 @@ end
 spaghetti = Recipe.create(
   name: "spaghetti",
   description: "Noodles in sauce",
-  servings: 6
+  directions: "cook the noodles, then put them in the sauce",
+  servings: 6,
+  time_prep:  1.hour,
+  time_cook: 10.minutes,
+  time_cleanup: 15.minutes,
 )
-spaghetti.recipe_ingredients << RecipeIngredient.new(
+spaghetti.recipe_ingredients << RecipeIngredient.create(
   quantity: 10,
   unit: "oz",
   ingredient: Ingredient.find_or_create_by(
     name: "spaghetti noodles"
   )
 )
-spaghetti.recipe_ingredients << RecipeIngredient.new(
+spaghetti.recipe_ingredients << RecipeIngredient.create(
   quantity: 20,
   unit: "oz",
   ingredient: Ingredient.find_or_create_by(
