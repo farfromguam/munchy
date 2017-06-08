@@ -14,3 +14,24 @@
     username: Faker::Internet.user_name
   )
 end
+
+
+spaghetti = Recipe.create(
+  name: "spaghetti",
+  description: "Noodles in sauce",
+  servings: 6
+)
+spaghetti.recipe_ingredients << RecipeIngredient.new(
+  quantity: 10,
+  unit: "oz",
+  ingredient: Ingredient.find_or_create_by(
+    name: "spaghetti noodles"
+  )
+)
+spaghetti.recipe_ingredients << RecipeIngredient.new(
+  quantity: 20,
+  unit: "oz",
+  ingredient: Ingredient.find_or_create_by(
+    name: "red sauce"
+  )
+)
