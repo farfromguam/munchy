@@ -12,17 +12,17 @@ class Recipe < ActiveRecord::Base
 
   def show
     system('clear')
-    puts "#{self.name} - #{self.description}"
-    puts "INFO:"
+    puts "#{self.name} - #{self.description}".bold
+    puts "INFO:".underline
     puts "serves:  #{self.servings}"
     puts "prep:    #{self.time_prep} seconds"
     puts "cook:    #{self.time_cook} seconds"
     puts "cleanup: #{self.time_cleanup} seconds"
-    puts "INGREDIENTS:"
+    puts "INGREDIENTS:".underline
     self.recipe_ingredients.each_with_index do |recipe_ingredient|
       recipe_ingredient.show
     end
-    puts "DIRECTIONS:"
+    puts "DIRECTIONS:".underline
     puts "#{self.directions}"
   end
 
