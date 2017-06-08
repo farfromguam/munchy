@@ -9,59 +9,52 @@ tacos = Recipe.create(
   time_cleanup: 15.minutes,
 )
 # Add as many recipe_ingredients as needed.
-taco.recipe_ingredients << RecipeIngredient.create(
+tacos.recipe_ingredients << RecipeIngredient.create(
   quantity: 1 ,
   unit: "pound",
   ingredient: Ingredient.find_or_create_by(
     name: "ground beef"
   )
 )
-taco.recipe_ingredients << RecipeIngredient.create(
+tacos.recipe_ingredients << RecipeIngredient.create(
   quantity: 1,
   unit: "package",
   ingredient: Ingredient.find_or_create_by(
     name: "taco seasoning"
   )
 )
-taco.recipe_ingredients << RecipeIngredient.create(
+tacos.recipe_ingredients << RecipeIngredient.create(
   quantity: 1/4,
   unit: "cup",
   ingredient: Ingredient.find_or_create_by(
     name: "water"
   )
 )
-taco.recipe_ingredients << RecipeIngredient.create(
+tacos.recipe_ingredients << RecipeIngredient.create(
   quantity: 16,
   unit: "oz",
   ingredient: Ingredient.find_or_create_by(
     name: "black beans"
   )
 )
-taco.recipe_ingredients << RecipeIngredient.create(
+tacos.recipe_ingredients << RecipeIngredient.create(
   quantity: 8,
   unit: "oz",
   ingredient: Ingredient.find_or_create_by(
     name: "shredded sharp cheese"
   )
 )
-taco.recipe_ingredients << RecipeIngredient.create(
+tacos.recipe_ingredients << RecipeIngredient.create(
   quantity: 1,
   unit: "jar",
   ingredient: Ingredient.find_or_create_by(
     name: "salsa"
   )
 )
-taco.recipe_ingredients << RecipeIngredient.create(
+tacos.recipe_ingredients << RecipeIngredient.create(
   quantity: 8,
   unit: "oz",
   ingredient: Ingredient.find_or_create_by(
     name: "sour cream"
-  )
-)
-taco.recipe_ingredients << RecipeIngredient.create(
-  quantity: ,
-  unit: "",
-  ingredient: Ingredient.find_or_create_by(
-    name: " "
   )
 )

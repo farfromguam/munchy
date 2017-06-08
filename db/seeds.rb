@@ -27,4 +27,6 @@ menu = Menu.create(
   name: 'All the Meal!'
 )
 
-menu.recipes << Recipe.first
+Recipe.all.each do |recipe|
+  menu.recipes << recipe
+end
