@@ -10,4 +10,14 @@ class Recipe < ActiveRecord::Base
     )
   end
 
+  def show
+    puts "#{self.name} - #{self.description}"
+    puts "INGREDIENTS:"
+    self.recipe_ingredients.each_with_index do |recipe_ingredient|
+      recipe_ingredient.show
+    end
+    puts "DIRECTIONS:"
+    puts "#{self.directions}"
+  end
+
 end
