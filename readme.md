@@ -1,4 +1,4 @@
-# Inquiry
+# Munchy
   A data collection platform for the common good
 
 
