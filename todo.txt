@@ -1,0 +1,3 @@
+TODO: fix imdone
+TODO: RSPEC
+TODO: FACTORY GIRL
