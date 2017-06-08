@@ -16,8 +16,15 @@
 end
 
 
-# import all the recipes!!!
+# Import all the recipes!!!
 Dir.glob('lib/assets/recipes/*.rb') do |rb_file|
   # do work on files ending in .rb in the desired directory
   load rb_file
 end
+
+
+menu = Menu.create(
+  name: 'All the Meal!'
+)
+
+menu.recipes << Recipe.first

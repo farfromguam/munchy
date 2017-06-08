@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170608044031) do
+ActiveRecord::Schema.define(version: 20170608161923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,46 @@ ActiveRecord::Schema.define(version: 20170608044031) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "meals", force: :cascade do |t|
+    t.integer  "recipe_id"
+    t.integer  "menu_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "meals", ["menu_id"], name: "index_meals_on_menu_id", using: :btree
+  add_index "meals", ["recipe_id"], name: "index_meals_on_recipe_id", using: :btree
+
+  create_table "menu_meals", force: :cascade do |t|
+    t.integer  "menu_id"
+    t.integer  "meal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "menu_meals", ["meal_id"], name: "index_menu_meals_on_meal_id", using: :btree
+  add_index "menu_meals", ["menu_id"], name: "index_menu_meals_on_menu_id", using: :btree
+
+  create_table "menu_recipes", force: :cascade do |t|
+    t.integer  "menu_id"
+    t.integer  "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "menu_recipes", ["menu_id"], name: "index_menu_recipes_on_menu_id", using: :btree
+  add_index "menu_recipes", ["recipe_id"], name: "index_menu_recipes_on_recipe_id", using: :btree
+
+  create_table "menus", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "menus", ["user_id"], name: "index_menus_on_user_id", using: :btree
 
   create_table "recipe_ingredients", force: :cascade do |t|
     t.integer  "recipe_id"
@@ -52,6 +92,13 @@ ActiveRecord::Schema.define(version: 20170608044031) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "meals", "menus"
+  add_foreign_key "meals", "recipes"
+  add_foreign_key "menu_meals", "meals"
+  add_foreign_key "menu_meals", "menus"
+  add_foreign_key "menu_recipes", "menus"
+  add_foreign_key "menu_recipes", "recipes"
+  add_foreign_key "menus", "users"
   add_foreign_key "recipe_ingredients", "ingredients"
   add_foreign_key "recipe_ingredients", "recipes"
 end
