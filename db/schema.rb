@@ -24,12 +24,10 @@ ActiveRecord::Schema.define(version: 20170608161923) do
 
   create_table "meals", force: :cascade do |t|
     t.integer  "recipe_id"
-    t.integer  "menu_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "meals", ["menu_id"], name: "index_meals_on_menu_id", using: :btree
   add_index "meals", ["recipe_id"], name: "index_meals_on_recipe_id", using: :btree
 
   create_table "menu_meals", force: :cascade do |t|
@@ -92,7 +90,6 @@ ActiveRecord::Schema.define(version: 20170608161923) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "meals", "menus"
   add_foreign_key "meals", "recipes"
   add_foreign_key "menu_meals", "meals"
   add_foreign_key "menu_meals", "menus"

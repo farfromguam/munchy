@@ -7,7 +7,7 @@ class MenuRecipe < ActiveRecord::Base
     puts "cooking #{self.recipe.name}. Yum!"
 
     self.recipe.servings.times do |x|
-      self.menu.meals << self.recipe.food
+      self.menu.meals << self.recipe.cook
     end
   end
 
