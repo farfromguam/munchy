@@ -16,26 +16,8 @@
 end
 
 
-spaghetti = Recipe.create(
-  name: "spaghetti",
-  description: "Noodles in sauce",
-  directions: "cook the noodles, then put them in the sauce",
-  servings: 6,
-  time_prep:  1.hour,
-  time_cook: 10.minutes,
-  time_cleanup: 15.minutes,
-)
-spaghetti.recipe_ingredients << RecipeIngredient.create(
-  quantity: 10,
-  unit: "oz",
-  ingredient: Ingredient.find_or_create_by(
-    name: "spaghetti noodles"
-  )
-)
-spaghetti.recipe_ingredients << RecipeIngredient.create(
-  quantity: 20,
-  unit: "oz",
-  ingredient: Ingredient.find_or_create_by(
-    name: "red sauce"
-  )
-)
+# import all the recipes!!!
+Dir.glob('lib/assets/recipes/*.rb') do |rb_file|
+  # do work on files ending in .rb in the desired directory
+  load rb_file
+end
